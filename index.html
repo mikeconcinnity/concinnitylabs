@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Concinnity Labs — Ambient AI for home and hospital. NOVA runs your home. ONMD protects your patients. Both live. Both patent pending. Raising $500K pre-seed." />
+<meta name="description" content="Concinnity Labs — AI incubation platform. ONMD is live inside Epic. Portfolio company model. Raising $500K pre-seed." />
 <title>Concinnity Labs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
   --wire2:   #1e3045;
   --steel:   #253850;
   --mist:    #3a5570;
-  --fog:     #6888a8;
+  --fog:     #8aabcc;
   --snow:    #9ab8d4;
   --white:   #cce4f8;
   --pure:    #eaf4ff;
@@ -152,6 +152,45 @@ nav::after {
 .nav-cta:hover { background: var(--cyan-bright) !important; }
 .nav-cta::after { display:none !important; }
 
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  color: var(--cyan);
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 0 0 1rem;
+  line-height: 1;
+}
+.nav-overlay {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(3,6,15,0.97);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(-16px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.nav-overlay.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+}
+.nav-overlay-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  color: var(--cyan); background: none; border: none;
+  font-size: 22px; cursor: pointer; line-height: 1;
+}
+.nav-overlay-links { display: flex; flex-direction: column; width: min(100%, 320px); }
+.nav-overlay-links a {
+  font-family: var(--display); font-size: 36px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--snow); text-decoration: none; text-align: center;
+  padding: 1.25rem 1rem; border-bottom: 1px solid var(--wire);
+  transition: color 0.15s;
+}
+.nav-overlay-links a:hover { color: var(--cyan); }
+.nav-overlay-links a:last-child { border-bottom: none; }
+
 section { padding: 100px 0; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
 
@@ -199,7 +238,7 @@ h2 {
 }
 h2 em { font-style: italic; color: var(--cyan); font-weight: 300; }
 .section-sub {
-  font-size: 16px; color: var(--fog); max-width: 560px;
+  font-size: 16px; color: #8aabcc; max-width: 560px;
   line-height: 1.7; margin-bottom: 3.5rem; letter-spacing: 0.02em;
 }
 
@@ -259,7 +298,7 @@ h1 .sub-line {
 }
 
 .hero-body {
-  font-size: 15px; color: var(--fog); line-height: 1.75;
+  font-size: 16px; color: #b8d4ec; line-height: 1.75;
   max-width: 520px; margin-bottom: 2.5rem; letter-spacing: 0.02em;
 }
 .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
@@ -315,9 +354,29 @@ h1 .sub-line {
 .stat-row .stat-item:last-child { border-right:none; }
 .stat-divider { height:1px; background:var(--wire); }
 
-/* ── PRODUCTS ── */
-#products { background: var(--void2); position:relative; overflow:hidden; }
+/* ── PORTFOLIO ── */
+#portfolio { background: var(--void2); position:relative; overflow:hidden; }
 .products-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.product-card-pipeline {
+  grid-column: 1 / -1;
+  background: var(--void4);
+  border: 1px solid var(--wire2);
+  border-top: 2px solid var(--wire2);
+}
+.product-card-pipeline:hover { border-top-color: var(--wire2); border-color: var(--wire2); }
+.product-card-pipeline::before { display: none; }
+.product-badge-muted {
+  background: var(--void4); color: var(--fog);
+  border: 1px solid var(--wire2);
+}
+.product-badge-muted::before { background: var(--fog); animation: none; opacity: 0.7; }
+.product-link-static {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--cyan); opacity: 0.5;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 0; border-bottom: 1px solid var(--cyan-dim);
+  cursor: default; pointer-events: none;
+}
 .product-card {
   background: var(--void3);
   border: 1px solid var(--wire2); border-top: 2px solid var(--cyan-dim);
@@ -345,7 +404,7 @@ h1 .sub-line {
 .product-expand { font-family:var(--mono); font-size:10px; letter-spacing:0.15em; color:var(--mist); margin-top:4px; text-transform:uppercase; }
 .product-body { padding: 24px 28px; }
 .product-tagline { font-family:var(--display); font-style:italic; font-weight:300; font-size:22px; color:var(--cyan); margin-bottom:16px; line-height:1.2; letter-spacing:0.02em; }
-.product-desc { font-size:14px; color:var(--fog); line-height:1.75; margin-bottom:24px; letter-spacing:0.02em; }
+.product-desc { font-size:14px; color:#9dc0dc; line-height:1.75; margin-bottom:24px; letter-spacing:0.02em; }
 .product-pills { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px; }
 .pill { font-family:var(--mono); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; padding:4px 10px; background:var(--void4); color:var(--fog); border:1px solid var(--wire2); }
 .pill.active { color:var(--cyan); border-color:var(--cyan-dim); background:var(--cyan-wire); }
@@ -393,53 +452,36 @@ h1 .sub-line {
 .adv-num { font-family:var(--display); font-size:48px; font-weight:700; color:var(--wire2); line-height:1; flex-shrink:0; width:48px; transition:color 0.2s; }
 .adv-item:hover .adv-num { color:var(--cyan-dim); }
 .adv-title { font-family:var(--display); font-size:16px; font-weight:700; color:var(--white); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; }
-.adv-body { font-size:13px; color:var(--fog); line-height:1.65; letter-spacing:0.02em; }
+.adv-body { font-size:13px; color:#8aabcc; line-height:1.65; letter-spacing:0.02em; }
 .adv-item.cta-item { background:var(--cyan-wire); border-left:2px solid var(--cyan-dim); }
 .adv-item.cta-item::before { display:none; }
 .adv-item.cta-item:hover { background:rgba(0,200,255,0.1); }
 
-/* ── FOUNDER ── */
-#founder { background:var(--void); position:relative; overflow:hidden; }
-.founder-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
-blockquote { font-family:var(--display); font-style:italic; font-weight:300; font-size:clamp(26px,3.5vw,40px); color:var(--snow); line-height:1.2; margin-bottom:2rem; letter-spacing:0.01em; }
-blockquote em { color:var(--cyan); font-weight:700; font-style:normal; }
-.founder-attr { font-family:var(--mono); font-size:10px; color:var(--mist); letter-spacing:0.2em; text-transform:uppercase; line-height:2; padding-left:16px; border-left:2px solid var(--cyan); }
-.facts { display:flex; flex-direction:column; gap:0; border:1px solid var(--wire2); }
-.fact { display:flex; gap:16px; padding:20px; border-bottom:1px solid var(--wire); transition:background 0.15s; }
-.fact:last-child { border-bottom:none; }
-.fact:hover { background:var(--cyan-wire); }
-.fact-icon { width:32px; height:32px; border:1px solid var(--cyan-dim); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:14px; background:var(--cyan-wire); clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
-.fact-text { font-size:13px; color:var(--fog); line-height:1.65; letter-spacing:0.02em; }
-.fact-text strong { color:var(--white); }
-
-/* ── INVEST ── */
-#invest { background:var(--void2); position:relative; }
-.invest-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
-.raise-block { border:1px solid var(--wire2); border-top:2px solid var(--cyan); background:var(--void3); margin-bottom:1.5rem; }
-.raise-inner { padding:24px; display:flex; align-items:flex-start; justify-content:space-between; }
+/* ── INVESTOR RELATIONS ── */
+#investor-relations { background:var(--void2); position:relative; }
+.ir-stack { display:flex; flex-direction:column; gap:1.5rem; }
+.ir-block { border:1px solid var(--wire2); background:var(--void3); padding:24px; }
+.ir-block-head { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan); margin-bottom:1.25rem; }
+.raise-block { border:1px solid var(--wire2); border-top:2px solid var(--cyan); background:var(--void3); }
+.raise-inner { padding:24px; }
 .raise-amount { font-family:var(--display); font-size:64px; font-weight:700; color:var(--cyan); line-height:1; letter-spacing:-0.02em; }
 .raise-label { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan-dim); margin-top:6px; }
-.raise-stage-val { font-size:14px; color:var(--snow); font-weight:600; letter-spacing:0.05em; text-align:right; }
-.raise-stage-label { font-family:var(--mono); font-size:9px; color:var(--mist); letter-spacing:0.15em; text-transform:uppercase; margin-top:4px; text-align:right; }
-.use-table { border:1px solid var(--wire2); background:var(--void3); }
-.use-head { padding:8px 16px; font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mist); background:var(--void4); border-bottom:1px solid var(--wire); }
-.use-row { display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid var(--wire); gap:12px; transition:background 0.15s; }
-.use-row:last-child { border-bottom:none; }
-.use-row:hover { background:var(--cyan-wire); }
-.use-label { font-size:13px; color:var(--fog); width:200px; flex-shrink:0; letter-spacing:0.02em; }
-.use-bar-wrap { flex:1; height:2px; background:var(--wire); }
-.use-bar-fill { height:100%; background:var(--cyan); }
-.use-pct { font-family:var(--mono); font-size:11px; color:var(--cyan); font-weight:500; width:30px; text-align:right; }
-.inv-table { border:1px solid var(--wire2); background:var(--void3); margin-bottom:1.5rem; }
-.inv-head { padding:8px 16px; font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mist); background:var(--void4); border-bottom:1px solid var(--wire); }
-.inv-row { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--wire); transition:background 0.15s; }
-.inv-row:last-child { border-bottom:none; }
-.inv-row:hover { background:var(--cyan-wire); }
-.inv-name { font-size:14px; color:var(--snow); font-weight:600; letter-spacing:0.03em; }
-.inv-tag { font-family:var(--mono); font-size:9px; letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px; background:var(--blue-dim); color:var(--blue); border:1px solid rgba(74,158,255,0.2); }
-.oneliner-block { border:1px solid var(--cyan-dim); background:var(--cyan-wire); padding:24px; }
-.oneliner-label { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan); margin-bottom:12px; }
-.oneliner-text { font-family:var(--display); font-style:italic; font-weight:300; font-size:17px; color:var(--snow); line-height:1.6; letter-spacing:0.02em; }
+.opp-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--wire); border:1px solid var(--wire); margin-bottom:1.25rem; }
+.opp-stat { background:var(--void2); padding:20px 16px; transition:background 0.15s; }
+.opp-stat:hover { background:var(--void4); }
+.opp-stat-val { font-family:var(--display); font-size:36px; font-weight:700; color:var(--cyan); line-height:1; letter-spacing:-0.02em; margin-bottom:10px; }
+.opp-stat-desc { font-size:13px; color:#8aabcc; line-height:1.55; letter-spacing:0.02em; }
+.opp-caption { font-family:var(--display); font-style:italic; font-weight:300; font-size:17px; color:var(--snow); line-height:1.5; letter-spacing:0.02em; }
+.traction-list { display:flex; flex-direction:column; gap:0; border:1px solid var(--wire2); }
+.traction-item { font-size:14px; color:#8aabcc; line-height:1.65; letter-spacing:0.02em; padding:16px 16px 16px 20px; border-bottom:1px solid var(--wire); border-left:2px solid var(--cyan); transition:background 0.15s; }
+.traction-item:last-child { border-bottom:none; }
+.traction-item:hover { background:var(--cyan-wire); }
+.ir-contact-block { border:1px solid var(--cyan-dim); background:var(--cyan-wire); padding:24px; text-align:center; }
+.ir-contact-head { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cyan); margin-bottom:1rem; }
+.ir-contact-text { font-size:15px; color:#8aabcc; line-height:1.7; margin-bottom:1.25rem; letter-spacing:0.02em; max-width:560px; margin-left:auto; margin-right:auto; }
+.ir-contact-email { display:inline-block; font-family:var(--mono); font-size:18px; letter-spacing:0.1em; color:var(--cyan); text-decoration:none; border-bottom:1px solid var(--cyan-dim); padding-bottom:4px; transition:border-color 0.2s, color 0.2s; }
+.ir-contact-email:hover { color:var(--cyan-bright); border-color:var(--cyan); }
+.ir-contact-role { font-family:var(--mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mist); margin-top:12px; }
 
 /* ── CONTACT ── */
 #contact { background:var(--void); padding:140px 0; text-align:center; position:relative; overflow:hidden; }
@@ -459,6 +501,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
 @media (max-width:960px) {
   nav { padding:0 1.25rem; }
   .nav-links { display:none; }
+  .nav-toggle { display:block; }
   .container { padding:0 1.25rem; }
   section { padding:70px 0; }
   .hero-content { grid-template-columns:1fr; padding:100px 1.25rem 60px; }
@@ -468,10 +511,8 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
   .rev-head,.rev-row { grid-template-columns:80px 1fr; }
   .rev-head > div:nth-child(n+3),.rev-row > *:nth-child(n+3) { display:none; }
   .adv-grid { grid-template-columns:1fr; }
-  .founder-grid { grid-template-columns:1fr; gap:2.5rem; }
-  .invest-grid { grid-template-columns:1fr; }
+  .opp-stats { grid-template-columns:1fr; }
   footer { flex-direction:column; gap:1rem; text-align:center; padding:1.25rem; }
-  .use-label { width:140px; }
 }
 </style>
 </head>
@@ -483,31 +524,44 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
     <span>CONCINNITY LABS</span>
   </a>
   <div class="nav-links">
-    <a href="#products">Products</a>
+    <a href="#portfolio">Products</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#market">Market</a>
-    <a href="#advantages">Edge</a>
-    <a href="#founder">Founder</a>
-    <a href="#invest">Invest</a>
+    <a href="#investor-relations">Investors</a>
     <a href="#contact" class="nav-cta">Contact</a>
   </div>
+  <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
 </nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+  <button type="button" class="nav-overlay-close" aria-label="Close menu">✕</button>
+  <div class="nav-overlay-links">
+    <a href="#portfolio">Products</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#market">Market</a>
+    <a href="#investor-relations">Investors</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
 
 <div class="ticker-bar">
   <div class="ticker-inner" aria-hidden="true">
-    <span class="ticker-item"><strong>ONMD.AI</strong> LIVE &amp; DEPLOYED<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">CONCINNITY LABS — AI INCUBATION<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">FIRST PORTFOLIO PRODUCT: <strong>ONMD.AI</strong><span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">LIVE · DEPLOYED · PATENT PENDING<span class="ticker-sep"> // </span></span>
     <span class="ticker-item"><strong>118</strong> TESTS PASSING<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">PATENT APPLICATION <strong>#64/080,919</strong> CONFIRMED<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item"><strong>NOVA</strong> RUNNING DAILY IN FOUNDER'S HOME<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">RAISING <strong>$500K</strong> PRE-SEED NOW<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">EPIC INTEGRATED · FHIR READY<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item"><strong>$5–11M</strong> LOST PER HOSPITAL PER YEAR — WE CAPTURE IT<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">RAISING <strong>$500K</strong> PRE-SEED<span class="ticker-sep"> // </span></span>
     <span class="ticker-item">CDS MARKET <strong>$10.75B</strong> · CAGR <strong>7.6%</strong><span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">TWO PRODUCTS · TWO PATENTS · ZERO OUTSIDE CAPITAL<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item"><strong>ONMD.AI</strong> LIVE &amp; DEPLOYED<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">CONCINNITY LABS — AI INCUBATION<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">FIRST PORTFOLIO PRODUCT: <strong>ONMD.AI</strong><span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">LIVE · DEPLOYED · PATENT PENDING<span class="ticker-sep"> // </span></span>
     <span class="ticker-item"><strong>118</strong> TESTS PASSING<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">PATENT APPLICATION <strong>#64/080,919</strong> CONFIRMED<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item"><strong>NOVA</strong> RUNNING DAILY IN FOUNDER'S HOME<span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">RAISING <strong>$500K</strong> PRE-SEED NOW<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">EPIC INTEGRATED · FHIR READY<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item"><strong>$5–11M</strong> LOST PER HOSPITAL PER YEAR — WE CAPTURE IT<span class="ticker-sep"> // </span></span>
+    <span class="ticker-item">RAISING <strong>$500K</strong> PRE-SEED<span class="ticker-sep"> // </span></span>
     <span class="ticker-item">CDS MARKET <strong>$10.75B</strong> · CAGR <strong>7.6%</strong><span class="ticker-sep"> // </span></span>
-    <span class="ticker-item">TWO PRODUCTS · TWO PATENTS · ZERO OUTSIDE CAPITAL<span class="ticker-sep"> // </span></span>
   </div>
 </div>
 
@@ -521,11 +575,11 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
   </div>
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow">PRE-SEED · BOOTSTRAPPED · BOTH PRODUCTS LIVE</div>
-      <h1>AMBIENT<br /><em>AI</em><br /><span class="sub-line">FOR HOME &amp; HOSPITAL</span></h1>
-      <p class="hero-body">Concinnity Labs builds AI that harmonizes the two places people need it most. NOVA runs your home. ONMD protects your patients. Both are live. Both are patent pending. We're building the future — today.</p>
+      <div class="hero-eyebrow">AI INCUBATION · PORTFOLIO COMPANY MODEL · FIRST PRODUCT LIVE</div>
+      <h1>WE BUILD<br /><em>AI</em><br /><span class="sub-line">WHERE IT MATTERS MOST</span></h1>
+      <p class="hero-body">Concinnity Labs identifies high-value problems where AI creates outsized impact — then builds, deploys, and scales the solution. Our first portfolio product, ONMD, is live inside Epic today. The pipeline doesn't stop here.</p>
       <div class="hero-actions">
-        <a href="#invest" class="btn btn-cyan">View Investment</a>
+        <a href="#portfolio" class="btn btn-cyan">View Portfolio</a>
         <a href="https://onmd.ai" class="btn btn-ghost" target="_blank" rel="noopener">ONMD.AI ↗</a>
       </div>
     </div>
@@ -536,8 +590,8 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
       </div>
       <div class="stat-item">
         <div>
-          <div class="stat-label">Fundraise Ask</div>
-          <div class="stat-value">$500K <span>PRE-SEED</span></div>
+          <div class="stat-label">Portfolio Products</div>
+          <div class="stat-value">02 <span>LIVE</span></div>
         </div>
       </div>
       <div class="stat-divider"></div>
@@ -552,7 +606,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
       <div class="stat-divider"></div>
       <div class="stat-row">
         <div class="stat-item">
-          <div><div class="stat-label">Tests Pass</div><div class="stat-value" style="font-size:22px">118</div></div>
+          <div><div class="stat-label">Tests Passing</div><div class="stat-value" style="font-size:22px">118</div></div>
         </div>
         <div class="stat-item">
           <div><div class="stat-label">Patents</div><div class="stat-value" style="font-size:22px">2 <span>PEND</span></div></div>
@@ -560,28 +614,28 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div><div class="stat-label">Monthly Infra Cost</div><div class="stat-value" style="font-size:22px">&lt;$50 <span>/ MO</span></div></div>
+        <div><div class="stat-label">Pre-Seed Raise</div><div class="stat-value" style="font-size:22px">$500K</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="products">
+<section id="portfolio">
   <div class="circuit-bg" style="opacity:0.5;"></div>
   <div class="container" style="position:relative;z-index:1;">
-    <div class="label">Products // Two Systems Online</div>
-    <h2>Two products.<br /><em>One architecture.</em></h2>
-    <p class="section-sub">Concinnity — the skillful harmonious arrangement of parts working together elegantly. Intelligence in the right place, at the right time.</p>
+    <div class="label">Portfolio // Active Products</div>
+    <h2>First product live.<br /><em>Pipeline building.</em></h2>
+    <p class="section-sub">Concinnity Labs operates as an AI incubation platform. We identify markets where documentation, intelligence, and automation gaps cost billions — then we build the product that closes the gap. ONMD is our first deployment. It will not be our last.</p>
     <div class="products-wrap">
       <div class="product-card">
         <div class="product-header">
-          <div class="product-badge">Live at onmd.ai</div>
+          <div class="product-badge">Portfolio Product 01 · Live</div>
           <div class="product-name">ONMD</div>
           <div class="product-expand">Omniscient Network MD</div>
         </div>
         <div class="product-body">
-          <div class="product-tagline">"Document what Epic doesn't capture."</div>
-          <p class="product-desc">Epic catches the clinical finding. ONMD catches whether it made it into the chart correctly. Every undocumented condition is revenue lost and a compliance risk. Real time. Point of care. Before discharge.</p>
+          <div class="product-tagline">The documentation gap costs hospitals millions. We close it in real time.</div>
+          <p class="product-desc">Every undocumented clinical condition is revenue lost and a compliance risk. Existing solutions — Iodine, Nuance, Waystar — catch it weeks later in billing review. ONMD catches it at the bedside, in real time, surfacing documentation gaps to the attending physician before the patient is discharged. The first product of its kind. Patent pending.</p>
           <div class="product-pills">
             <span class="pill active">SMART on FHIR</span>
             <span class="pill active">CDS Hooks</span>
@@ -597,13 +651,13 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
       </div>
       <div class="product-card">
         <div class="product-header">
-          <div class="product-badge">Running Daily</div>
+          <div class="product-badge">Portfolio Product 02 · Live</div>
           <div class="product-name">NOVA</div>
           <div class="product-expand">Networked Operations and Voice Assistant</div>
         </div>
         <div class="product-body">
-          <div class="product-tagline">"The AI your family actually talks to."</div>
-          <p class="product-desc">Three-brain AI routing: Claude for emotional intelligence, Gemini for research, Grok for real-time data. Whole-home Sonos. Persistent memory. Self-improving codebase. Think JARVIS — running today, in a home in Kentucky. Named by Callie (5) and Remy (4).</p>
+          <div class="product-tagline">Multi-model AI routing for whole-home intelligence.</div>
+          <p class="product-desc">NOVA is Concinnity Labs' proof-of-architecture product — a whole-home AI companion that routes queries across three specialized AI models in real time. It demonstrates the core technical capability that powers everything we build: intelligent routing, persistent context, and adaptive response at the edge. Patent pending.</p>
           <div class="product-pills">
             <span class="pill active">Three-Brain Routing</span>
             <span class="pill active">ElevenLabs Voice</span>
@@ -614,7 +668,19 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
             <span class="pill">PyQt6 + Three.js</span>
             <span class="pill active">Patent Pending</span>
           </div>
-          <span class="product-link" style="opacity:0.4;cursor:default;">Consumer Launch TBD</span>
+          <span class="product-link-static">// Architecture proof · Patent pending</span>
+        </div>
+      </div>
+      <div class="product-card product-card-pipeline">
+        <div class="product-header">
+          <div class="product-badge product-badge-muted">In Development</div>
+          <div class="product-name">NEXT</div>
+          <div class="product-expand">Concinnity Labs Pipeline</div>
+        </div>
+        <div class="product-body">
+          <div class="product-tagline">The next problem worth solving.</div>
+          <p class="product-desc">We are actively evaluating the next high-value deployment target. Concinnity Labs builds where the documentation gap, the intelligence gap, or the automation gap is largest — and where AI can close it faster than any alternative. If you are working on a problem that fits that profile, we want to hear from you.</p>
+          <a href="mailto:mike@concinnitylabs.com" class="product-link">Investor &amp; Partner Inquiries → mike@concinnitylabs.com</a>
         </div>
       </div>
     </div>
@@ -623,24 +689,24 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
 
 <section id="market">
   <div class="container">
-    <div class="label">Market // $10.75B Opportunity</div>
-    <h2>A market <em>ripe</em><br />for the taking.</h2>
-    <p class="section-sub">Every competitor works retrospectively with billing teams. ONMD works in real time with the attending physician. That model has never been built — until now.</p>
+    <div class="label">Market // The Documentation Gap</div>
+    <h2>$5–11M lost per hospital.<br /><em>Per year. Every year.</em></h2>
+    <p class="section-sub">Incomplete clinical documentation is one of the largest and most consistently overlooked sources of revenue leakage in US healthcare. ONMD is the first real-time solution built to close it — not retrospectively with billing teams, but at the bedside with the attending physician.</p>
     <div class="market-stats">
       <div class="mstat">
-        <div class="mstat-label">CDS Market Size</div>
-        <div class="mstat-val">$10.75B</div>
-        <div class="mstat-sub">7.6% CAGR through 2030. Fastest-growing segment in health IT.</div>
+        <div class="mstat-label">Documentation Gap Per Hospital</div>
+        <div class="mstat-val">$5–11M</div>
+        <div class="mstat-sub">Lost annually per 250-bed hospital from undercoded diagnoses. Source: CDI industry data.</div>
       </div>
       <div class="mstat">
-        <div class="mstat-label">Addressable Hospitals</div>
-        <div class="mstat-val">3,295</div>
-        <div class="mstat-sub">6,000 US hospitals · 54.9% on Epic · ONMD integrates natively via SMART on FHIR.</div>
+        <div class="mstat-label">Records With Undocumented Conditions</div>
+        <div class="mstat-val">45%</div>
+        <div class="mstat-sub">Of inpatient medical records contain at least two undocumented conditions. Every one is revenue lost and compliance risk.</div>
       </div>
       <div class="mstat">
-        <div class="mstat-label">Competitor Avg. Price</div>
-        <div class="mstat-val">$550K</div>
-        <div class="mstat-sub">Iodine, Nuance, Waystar. All retrospective. All billing-team focused. None real-time.</div>
+        <div class="mstat-label">Competitor Approach</div>
+        <div class="mstat-val">0/3</div>
+        <div class="mstat-sub">Iodine, Nuance, Waystar — none work in real time with the attending physician. All retrospective. All billing-team focused.</div>
       </div>
     </div>
     <div class="rev-table">
@@ -648,28 +714,28 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
         <div>Phase</div><div>Model</div><div>Price</div><div>Target</div>
       </div>
       <div class="rev-row">
-        <div class="rev-phase">01</div>
-        <div class="rev-cell">Free for individual physicians — viral distribution like OpenEvidence</div>
+        <div class="rev-phase">PHYSICIAN</div>
+        <div class="rev-cell">Free for individual physicians — direct adoption, no IT approval, no procurement cycle</div>
         <div class="rev-cell"><strong>$0</strong></div>
         <div class="rev-cell">Distribution engine</div>
       </div>
       <div class="rev-row">
-        <div class="rev-phase">02</div>
-        <div class="rev-cell">Department pilot — direct physician-led hospital adoption</div>
+        <div class="rev-phase">DEPARTMENT</div>
+        <div class="rev-cell">Department pilot — physician-led expansion within the hospital</div>
         <div class="rev-cell"><strong>$25K / quarter</strong></div>
-        <div class="rev-cell">$100K / hospital</div>
+        <div class="rev-cell">$100K / hospital / year</div>
       </div>
       <div class="rev-row">
-        <div class="rev-phase">03</div>
-        <div class="rev-cell">Enterprise — 8–10% rev share on captured documentation revenue</div>
-        <div class="rev-cell"><strong>8–10% share</strong></div>
-        <div class="rev-cell">$250K avg / hospital</div>
+        <div class="rev-phase">ENTERPRISE</div>
+        <div class="rev-cell">Hospital enterprise — flat fee or revenue share on captured documentation</div>
+        <div class="rev-cell"><strong>$500K/yr or rev share</strong></div>
+        <div class="rev-cell">$500K–$2M / hospital</div>
       </div>
       <div class="rev-row highlight">
         <div class="rev-phase" style="color:var(--cyan);">SCALE</div>
         <div class="rev-cell"><strong>50 hospital enterprise contracts</strong></div>
-        <div class="rev-cell"><strong>$12.5M ARR</strong></div>
-        <div class="rev-cell"><strong>$50–75M valuation</strong></div>
+        <div class="rev-cell"><strong>$500K–$2M per hospital</strong></div>
+        <div class="rev-cell"><strong>$25–100M ARR</strong></div>
       </div>
     </div>
   </div>
@@ -677,139 +743,113 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
 
 <section id="advantages">
   <div class="container">
-    <div class="label">Competitive Edge // Seven Moats</div>
-    <h2>Built before<br /><em>raising a dollar.</em></h2>
-    <p class="section-sub">Seven defensible advantages, constructed in under 30 days with zero outside capital.</p>
+    <div class="label">Advantage // Why Concinnity Labs Wins</div>
+    <h2>Built different.<br /><em>From the start.</em></h2>
+    <p class="section-sub">Seven structural advantages — each one a function of how Concinnity Labs is built, not just what it has built.</p>
     <div class="adv-grid">
       <div class="adv-item">
         <div class="adv-num">01</div>
         <div>
-          <div class="adv-title">Real-Time Point-of-Care Revenue Attribution</div>
-          <div class="adv-body">No competitor does this. Iodine, Nuance, and Waystar work retrospectively with billing teams. ONMD is live with the attending physician before discharge.</div>
+          <div class="adv-title">Real-Time · Not Retrospective</div>
+          <div class="adv-body">ONMD surfaces documentation gaps to the attending physician before discharge. Every competitor catches the same gap weeks later in billing review. The difference is millions per hospital per year.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">02</div>
         <div>
-          <div class="adv-title">Complements Epic — Doesn't Compete</div>
-          <div class="adv-body">ONMD plugs into Epic via SMART on FHIR. It's an intelligent layer that catches what Epic surfaces but physicians don't document. No replacement anxiety.</div>
+          <div class="adv-title">Complements Epic — Does Not Compete</div>
+          <div class="adv-body">ONMD integrates via SMART on FHIR and CDS Hooks. It is an intelligence layer on top of the EHR — not a replacement. No displacement anxiety. No rip-and-replace.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">03</div>
         <div>
-          <div class="adv-title">Direct-to-Physician Free Model</div>
-          <div class="adv-body">Bypasses the 18-month hospital procurement cycle. Free for individual physicians creates viral adoption — same model that took OpenEvidence to a $12B valuation.</div>
+          <div class="adv-title">Free to Start — Revenue Share at Scale</div>
+          <div class="adv-body">Free for individual physicians bypasses the 18-month hospital procurement cycle entirely. Physicians adopt it. Departments follow. Enterprises contract. Same viral model that drove OpenEvidence to a $12B valuation.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">04</div>
         <div>
-          <div class="adv-title">8 Years of Medical Sales Relationships</div>
-          <div class="adv-body">Deep physician relationships at St. Elizabeth, UC Health, and TriHealth — all Epic shops in the target market. The network is already built.</div>
+          <div class="adv-title">Established Clinical Relationships</div>
+          <div class="adv-body">Years of direct physician relationships inside the exact health systems ONMD targets — all Epic shops. The network exists. The trust exists. The sales cycle is shorter because of it.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">05</div>
         <div>
-          <div class="adv-title">Two Patents Pending on Core Technology</div>
-          <div class="adv-body">Multi-model AI routing (NOVA) and real-time clinical documentation intelligence (ONMD, App. #64/080,919, filed 06/02/2026) — both protected.</div>
+          <div class="adv-title">Two Patents Pending</div>
+          <div class="adv-body">Multi-model AI routing architecture (NOVA) and real-time clinical documentation intelligence (ONMD, App. #64/080,919, filed 06/02/2026). Core technology protected before the first enterprise contract.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">06</div>
         <div>
-          <div class="adv-title">Zero Infrastructure Burn</div>
-          <div class="adv-body">Under $50/month in operating costs. Two live, functional AI products with zero outside capital. Every dollar raised is signal, not survival.</div>
+          <div class="adv-title">Capital-Efficient by Design</div>
+          <div class="adv-body">The incubation model is built to ship products without burning capital on infrastructure. Every dollar raised goes toward clinical sales, HIPAA compliance, and the next product — not servers.</div>
         </div>
       </div>
       <div class="adv-item">
         <div class="adv-num">07</div>
         <div>
-          <div class="adv-title">NOVA Proves Dual-Domain AI Credibility</div>
-          <div class="adv-body">Consumer home AI and enterprise clinical AI share the same underlying architecture. NOVA proves the multi-model routing stack works at scale.</div>
+          <div class="adv-title">Platform Model — Not a Single Bet</div>
+          <div class="adv-body">ONMD is the first deployment. NOVA proves the architecture. Concinnity Labs is building the platform that identifies the next gap and ships the next product. Investors are not betting on one product — they are betting on the engine.</div>
         </div>
       </div>
       <div class="adv-item cta-item">
         <div class="adv-num" style="color:var(--cyan-dim);">→</div>
         <div>
-          <div class="adv-title" style="color:var(--cyan);">Two Products. Thirty Days. No Team.</div>
-          <div class="adv-body" style="color:rgba(154,184,212,0.85);">Mike Roark built two live, patent-pending AI products in under 30 days using AI-assisted development — solo, bootstrapped, no co-founder, no engineering team, no outside capital. That is the proof of concept.</div>
+          <div class="adv-title" style="color:var(--cyan);">The Model Works. The First Product Proves It.</div>
+          <div class="adv-body">ONMD is live, deployed, integrated with Epic, 118 tests passing, and in active physician outreach. That is not a prototype. That is a deployed product built by an incubation platform that knows how to ship.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="founder">
-  <div class="circuit-bg" style="opacity:0.3;"></div>
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="label">Founder // Mike Roark</div>
-    <div class="founder-grid">
-      <div>
-        <blockquote>"Two live products. Two patents pending. Zero outside capital. <em>This is what conviction looks like.</em>"</blockquote>
-        <div class="founder-attr">Mike Roark<br />Founder &amp; CEO · Concinnity Labs<br />Union, Kentucky</div>
-      </div>
-      <div class="facts">
-        <div class="fact">
-          <div class="fact-icon">⚕</div>
-          <div class="fact-text"><strong>8 years medical device sales</strong> at Argon Medical — deep physician relationships at St. Elizabeth, UC Health, and TriHealth in Cincinnati/Northern Kentucky.</div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">⚡</div>
-          <div class="fact-text"><strong>Built both products in under 30 days</strong> using AI-assisted development — solo, bootstrapped, zero co-founder or engineering team.</div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">🤝</div>
-          <div class="fact-text"><strong>Active physician outreach:</strong> Dr. Alexander Hou (Vascular Surgery) and Dr. Mohan Brar (Interventional Cardiology), Edgewood, KY.</div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">🔬</div>
-          <div class="fact-text"><strong>Territory is the moat.</strong> All three target health systems run Epic EHR. ONMD integrates natively — no IT approval required to get in the door.</div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">📋</div>
-          <div class="fact-text"><strong>Two patents pending:</strong> multi-model AI routing (NOVA) and real-time clinical documentation intelligence (ONMD, filed 06/02/2026, App. #64/080,919).</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="invest">
+<section id="investor-relations">
   <div class="container">
-    <div class="label">Investment // $500K Pre-Seed</div>
-    <h2>First hospital pilot<br /><em>in sight.</em></h2>
-    <p class="section-sub">Raising to put ONMD in the hands of 50 physicians and sign our first hospital enterprise contract.</p>
-    <div class="invest-grid">
-      <div>
-        <div class="raise-block">
-          <div class="raise-inner">
-            <div><div class="raise-amount">$500K</div><div class="raise-label">// Pre-Seed Round</div></div>
-            <div><div class="raise-stage-val">Bootstrapped</div><div class="raise-stage-label">Zero prior capital</div></div>
+    <div class="label">Investors // Qualified Inquiries</div>
+    <h2>Raising $500K.<br /><em>To prove the model at scale.</em></h2>
+    <p class="section-sub">ONMD is live. The architecture is proven. The market is validated by $975M in ambient clinical AI investment in 2025 alone. This raise funds the milestones that unlock the enterprise contracts.</p>
+    <div class="ir-stack">
+      <div class="raise-block">
+        <div class="raise-inner">
+          <div class="raise-amount">$500K</div>
+          <div class="raise-label">// Pre-Seed</div>
+        </div>
+      </div>
+      <div class="ir-block">
+        <div class="ir-block-head">// Why Now</div>
+        <div class="opp-stats">
+          <div class="opp-stat">
+            <div class="opp-stat-val">$975M</div>
+            <div class="opp-stat-desc">Invested in ambient clinical AI in 2025</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-val">$0</div>
+            <div class="opp-stat-desc">Raised for real-time point-of-care documentation — the category ONMD owns</div>
+          </div>
+          <div class="opp-stat">
+            <div class="opp-stat-val">18 months</div>
+            <div class="opp-stat-desc">Average hospital procurement cycle ONMD bypasses with the free physician model</div>
           </div>
         </div>
-        <div class="use-table">
-          <div class="use-head">// Use of Funds</div>
-          <div class="use-row"><div class="use-label">Clinical Sales &amp; Physician Outreach</div><div class="use-bar-wrap"><div class="use-bar-fill" style="width:40%"></div></div><div class="use-pct">40%</div></div>
-          <div class="use-row"><div class="use-label">Engineering (Technical Co-Founder)</div><div class="use-bar-wrap"><div class="use-bar-fill" style="width:30%"></div></div><div class="use-pct">30%</div></div>
-          <div class="use-row"><div class="use-label">HIPAA Compliance Infrastructure</div><div class="use-bar-wrap"><div class="use-bar-fill" style="width:20%"></div></div><div class="use-pct">20%</div></div>
-          <div class="use-row"><div class="use-label">Operations &amp; Legal</div><div class="use-bar-wrap"><div class="use-bar-fill" style="width:10%"></div></div><div class="use-pct">10%</div></div>
-        </div>
       </div>
-      <div>
-        <div class="inv-table">
-          <div class="inv-head">// Target Investors</div>
-          <div class="inv-row"><div class="inv-name">Rock Health</div><div class="inv-tag">Healthcare · Pre-Seed</div></div>
-          <div class="inv-row"><div class="inv-name">StartUp Health</div><div class="inv-tag">Mission-Driven · Early</div></div>
-          <div class="inv-row"><div class="inv-name">Drive Capital</div><div class="inv-tag">Midwest · Columbus</div></div>
-          <div class="inv-row"><div class="inv-name">CincyTech</div><div class="inv-tag">Local · First Checks</div></div>
-          <div class="inv-row"><div class="inv-name">Frist Cressey Ventures</div><div class="inv-tag">Healthcare Operators</div></div>
+      <div class="ir-block">
+        <div class="ir-block-head">// What We're Building Toward</div>
+        <div class="traction-list">
+          <div class="traction-item">50 physicians actively using ONMD — viral distribution engine active</div>
+          <div class="traction-item">First hospital department pilot signed — $25K/quarter revenue begins</div>
+          <div class="traction-item">HIPAA compliance infrastructure complete — enterprise contracts unblocked</div>
         </div>
-        <div class="oneliner-block">
-          <div class="oneliner-label">// Investor One-Liner</div>
-          <div class="oneliner-text">"Concinnity Labs is building ambient AI for the two places people need it most — home and hospital. NOVA runs your home. ONMD protects your patients. Both are live. Both are patent pending. We're raising $500K to put ONMD in the hands of 50 physicians and sign our first hospital pilot."</div>
-        </div>
+        <p class="opp-caption">These three milestones position Concinnity Labs for a seed round at a $15–25M valuation. At 50 hospital contracts, revenue projections support a $250M–$1B exit.</p>
+      </div>
+      <div class="ir-contact-block">
+        <div class="ir-contact-head">// Request Materials</div>
+        <p class="ir-contact-text">Pitch deck, financial model, and cap table available to qualified investors on request.</p>
+        <a href="mailto:mike@concinnitylabs.com" class="ir-contact-email">mike@concinnitylabs.com</a>
+        <div class="ir-contact-role">Investor Relations · Concinnity Labs</div>
       </div>
     </div>
   </div>
@@ -821,16 +861,47 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1
   <div class="container contact-center">
     <div class="label" style="justify-content:center;margin-bottom:1.5rem;">Contact // mike@concinnitylabs.com</div>
     <h2>Ready to<br /><em>talk?</em></h2>
-    <p class="section-sub" style="margin:0 auto 2.5rem;text-align:center;">Whether you're an investor, a physician, or a health system — the door is open.</p>
+    <p class="section-sub" style="margin:0 auto 2.5rem;text-align:center;">Investors, physicians, health systems, and potential portfolio partners are welcome. We respond to every inquiry.</p>
     <a href="mailto:mike@concinnitylabs.com" class="contact-email">mike@concinnitylabs.com</a>
-    <div class="contact-tagline">The word "concinnity" means the skillful and harmonious arrangement of parts working together elegantly. That is not just our name. It is our operating system.</div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-left">&copy; 2026 THE ROARK GROUP INC. DBA CONCINNITY LABS · UNION, KY</div>
-  <div class="footer-right"><a href="https://onmd.ai" target="_blank" rel="noopener">ONMD.AI</a> &nbsp;·&nbsp; mike@concinnitylabs.com</div>
+  <div class="footer-left">&copy; 2026 CONCINNITY LABS · AI INCUBATION</div>
+  <div class="footer-right"><a href="https://onmd.ai" target="_blank" rel="noopener">ONMD.AI</a> · mike@concinnitylabs.com</div>
 </footer>
+
+<script>
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var overlay = document.getElementById('nav-overlay');
+  var closeBtn = document.querySelector('.nav-overlay-close');
+  var links = document.querySelectorAll('.nav-overlay-links a');
+
+  function openMenu() {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (toggle) toggle.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  links.forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeMenu();
+  });
+})();
+</script>
 
 </body>
 </html>
