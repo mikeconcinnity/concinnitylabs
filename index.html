@@ -404,6 +404,9 @@ h1 .sub-line {
 .product-expand { font-family:var(--mono); font-size:10px; letter-spacing:0.15em; color:var(--mist); margin-top:4px; text-transform:uppercase; }
 .product-body { padding: 24px 28px; }
 .product-tagline { font-family:var(--display); font-style:italic; font-weight:300; font-size:22px; color:var(--cyan); margin-bottom:16px; line-height:1.2; letter-spacing:0.02em; }
+.product-tagline-onmd { font-style:normal; font-weight:700; }
+.product-tagline-primary { display:block; color:var(--pure); font-weight:700; }
+.product-tagline-accent { display:block; color:#2DD4BF; font-weight:700; }
 .product-desc { font-size:14px; color:#9dc0dc; line-height:1.75; margin-bottom:24px; letter-spacing:0.02em; }
 .product-pills { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px; }
 .pill { font-family:var(--mono); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; padding:4px 10px; background:var(--void4); color:var(--fog); border:1px solid var(--wire2); }
@@ -664,8 +667,11 @@ footer { flex-wrap:wrap; }
           <div class="product-expand">Omniscient Network MD</div>
         </div>
         <div class="product-body">
-          <div class="product-tagline">The documentation gap. Closed at the bedside.</div>
-          <p class="product-desc">Every undocumented clinical condition is a compliance risk and a documentation accuracy gap — that also costs hospitals millions annually. Every existing solution catches it weeks later in billing review — after the patient is discharged and the revenue is already gone. ONMD surfaces documentation gaps to the physician in real time, before discharge. No other product does this. Patent pending.</p>
+          <div class="product-tagline product-tagline-onmd">
+            <span class="product-tagline-primary">Did the chart capture everything?</span>
+            <span class="product-tagline-accent">See what's missing.</span>
+          </div>
+          <p class="product-desc">ONMD helps physicians find clinically-supported conditions missing from the chart. Every undocumented clinical condition is a compliance risk and a documentation accuracy gap — that also costs hospitals millions annually. Every existing solution catches it weeks later in billing review — after the patient is discharged and the revenue is already gone. ONMD surfaces documentation gaps to the physician in real time, before discharge. No other product does this. Patent pending.</p>
           <p class="product-desc">ONMD bypasses 18-month hospital procurement cycles entirely. Any physician can connect their Epic account in under 2 minutes at onmd.ai — no IT approval, no contract, no cost. Viral physician adoption drives hospital enterprise conversion.</p>
           <p class="product-desc">ONMD supports accurate clinical documentation only. All documentation decisions remain exclusively with the treating physician.</p>
           <div class="product-pills">
